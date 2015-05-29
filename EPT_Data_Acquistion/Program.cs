@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace EPT_Data_Acquistion
+namespace EPT_Data_Acquisition
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace EPT_Data_Acquistion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EPT_Data_Acquistion());
+            Application.Run(new EPT_Data_Acquisition());
         }
     }
 }

@@ -8,11 +8,11 @@ using System.IO.Ports;
 using System.IO;
 
 
-namespace EPT_Data_Acquistion
+namespace EPT_Data_Acquisition
 {
 
 
-    public partial class EPT_Data_Acquistion
+    public partial class EPT_Data_Acquisition
     {
 
         private void cmbChannelSelect_SelectedIndexChanged(object sender, EventArgs e)

@@ -10,13 +10,13 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace EPT_Data_Acquistion
+namespace EPT_Data_Acquisition
 {
-    public partial class EPT_Data_Acquistion : Form
+    public partial class EPT_Data_Acquisition : Form
     {
         int[] StorageArray = new int[50000];
 
-        public EPT_Data_Acquistion()
+        public EPT_Data_Acquisition()
         {
             InitializeComponent();
 
@@ -264,7 +264,7 @@ namespace EPT_Data_Acquistion
         public float VoltageScaleFactor = 1;
 
         // Main object loader
-        private void EPT_Data_Acquistion_Load(object sender, System.EventArgs e)
+        private void EPT_Data_Acquisition_Load(object sender, System.EventArgs e)
         {
             // Call the List Devices function
             ListDevices();

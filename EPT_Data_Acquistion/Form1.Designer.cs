@@ -1,6 +1,6 @@
-﻿namespace EPT_Data_Acquistion
+﻿namespace EPT_Data_Acquisition
 {
-    partial class EPT_Data_Acquistion
+    partial class EPT_Data_Acquisition
     {
         /// <summary>
         /// Required designer variable.
@@ -697,7 +697,7 @@
             this.lblVoltage_P6.TabIndex = 120;
             this.lblVoltage_P6.Text = "+2.5V";
             // 
-            // EPT_Data_Acquistion
+            // EPT_Data_Acquisition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -750,10 +750,10 @@
             this.Controls.Add(this.trkVoltageScale);
             this.Controls.Add(this.trkVoltageScaleControl);
             this.Controls.Add(this.cmbDevList);
-            this.Name = "EPT_Data_Acquistion";
+            this.Name = "EPT_Data_Acquisition";
             this.ShowIcon = false;
-            this.Text = "EPT_Data_Acquistion";
-            this.Load += new System.EventHandler(this.EPT_Data_Acquistion_Load);
+            this.Text = "EPT_Data_Acquisition";
+            this.Load += new System.EventHandler(this.EPT_Data_Acquisition_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

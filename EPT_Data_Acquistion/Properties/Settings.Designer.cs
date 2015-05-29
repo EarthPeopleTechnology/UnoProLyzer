@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EPT_Data_Acquistion.Properties
+namespace EPT_Data_Acquisition.Properties
 {
 
 
