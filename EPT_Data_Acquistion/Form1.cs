@@ -617,19 +617,19 @@ namespace EPT_Data_Acquisition
                     {
                         if (j % 25 != 0)
                         {
-                            g.DrawLine(Pens.White, j, (i - tickheight / 2),
-                                j, (i + tickheight / 2));
+                            g.DrawLine(Pens.White, j, (i - tickheight / 2) + kpadding,
+                                j, (i + tickheight / 2) + kpadding);
 
-                            g.DrawLine(Pens.White, (i - tickheight / 2), j,
-                                (i + tickheight / 2), j);
+                            g.DrawLine(Pens.White, (i - tickheight / 2) + kpadding, j,
+                                (i + tickheight / 2) + kpadding, j);
                         }
                         else
                         {
                             g.DrawLine(Pens.White, j, (i - tickheightLarge / 2) + kpadding,
                                 j, (i + tickheightLarge / 2) + kpadding);
 
-                            g.DrawLine(Pens.White, (i - tickheightLarge / 2), j,
-                                (i + tickheightLarge / 2), j);
+                            g.DrawLine(Pens.White, (i - tickheightLarge / 2) + kpadding, j,
+                                (i + tickheightLarge / 2) + kpadding, j);
                         }
                     }
                 }
