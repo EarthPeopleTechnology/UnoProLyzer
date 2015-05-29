@@ -14,6 +14,7 @@ namespace EPT_Data_Acquisition
 {
     public partial class EPT_Data_Acquisition : Form
     {
+        #region Constant declaration and variable initialization
         int[] StorageArray = new int[50000];
 
         public EPT_Data_Acquisition()
@@ -262,6 +263,8 @@ namespace EPT_Data_Acquisition
 
         //Voltage Scale Factor
         public float VoltageScaleFactor = 1;
+
+        #endregion
 
         // Main object loader
         private void EPT_Data_Acquisition_Load(object sender, System.EventArgs e)
@@ -655,6 +658,7 @@ namespace EPT_Data_Acquisition
 
         }
 
+        #region Transfer Data
         private void EPTParseReceive()
         {
             switch (EPTReceiveData.Command)
@@ -867,6 +871,7 @@ namespace EPT_Data_Acquisition
             }
         }
 
+        #region Display Value/buffer control
         public void DisplayValue1(object WriteRcvChar)
         {
             //this.Invoke(new MethodInvoker(delegate() { tbMonitor1.Text = (string)WriteRcvChar; }));
@@ -964,7 +969,7 @@ namespace EPT_Data_Acquisition
             }
             ScopeBuffer[ScopeBufferChannelSelect][IncrEPTReceiveIndex(ScopeBufferChannelSelect)] = (int)WriteRcvChar;
         }
-
+        #endregion
 
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -1116,6 +1121,7 @@ namespace EPT_Data_Acquisition
 
         }
 
+        #endregion
         //private void groupBox3_Enter(object sender, EventArgs e)
         //{
 
