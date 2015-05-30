@@ -10,13 +10,14 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace EPT_Data_Acquistion
+namespace UnoProLyzer
 {
-    public partial class EPT_Data_Acquistion : Form
+    public partial class UnoProLyzer : Form
     {
+        #region Constant declaration and variable initialization
         int[] StorageArray = new int[50000];
 
-        public EPT_Data_Acquistion()
+        public UnoProLyzer()
         {
             InitializeComponent();
 
@@ -263,8 +264,19 @@ namespace EPT_Data_Acquistion
         //Voltage Scale Factor
         public float VoltageScaleFactor = 1;
 
+        //RenderCursor values
+        public bool cursor1 = false;
+        public int cursor1_val = kScopeHeight / 4;
+        public bool cursor2 = false;
+        public int cursor2_val = 3 * (kScopeHeight / 4);
+
+        //Set default cursor color
+        Color cursor1_clr = Color.Cyan;
+        Color cursor2_clr = Color.Cyan;
+        #endregion
+
         // Main object loader
-        private void EPT_Data_Acquistion_Load(object sender, System.EventArgs e)
+        private void UnoProLyzer_Load(object sender, System.EventArgs e)
         {
             // Call the List Devices function
             ListDevices();
@@ -494,7 +506,7 @@ namespace EPT_Data_Acquistion
                                     xDraw = xpos * TimeScaleValue;
                                 else if (TimeScaleValue > 1)
                                     xDraw = xpos * (TimeScaleValue * 2);
-                                else 
+                                else
                                     xDraw = xpos;
 
                                 // Draw the scaled sample point by connecting
@@ -614,28 +626,33 @@ namespace EPT_Data_Acquistion
                     {
                         if (j % 25 != 0)
                         {
-                            g.DrawLine(Pens.White, j, (i - tickheight / 2),
-                                j, (i + tickheight / 2));
+                            g.DrawLine(Pens.White, j, (i - tickheight / 2) + kpadding,
+                                j, (i + tickheight / 2) + kpadding);
 
-                            g.DrawLine(Pens.White, (i - tickheight / 2), j,
-                                (i + tickheight / 2), j);
+                            g.DrawLine(Pens.White, (i - tickheight / 2) + kpadding, j,
+                                (i + tickheight / 2) + kpadding, j);
                         }
                         else
                         {
                             g.DrawLine(Pens.White, j, (i - tickheightLarge / 2) + kpadding,
                                 j, (i + tickheightLarge / 2) + kpadding);
 
-                            g.DrawLine(Pens.White, (i - tickheightLarge / 2), j,
-                                (i + tickheightLarge / 2), j);
+                            g.DrawLine(Pens.White, (i - tickheightLarge / 2) + kpadding, j,
+                                (i + tickheightLarge / 2) + kpadding, j);
                         }
                     }
                 }
             }
 
-
+            Pen cursorPen1 = new Pen(cursor1_clr, 2);
+            Pen cursorPen2 = new Pen(cursor2_clr, 2);
+            if (cursor1)
+                g.DrawLine(cursorPen1, 0, this.trkCursor1.Value, 450, this.trkCursor1.Value);
+            if (cursor2)
+                g.DrawLine(cursorPen2, 0, this.trkCursor2.Value, 450, this.trkCursor2.Value);
             // Draw Scope from a to d
             //if (ScopeOn)
-                this.RefreshScope(g);
+            this.RefreshScope(g);
         }
 
 
@@ -655,6 +672,7 @@ namespace EPT_Data_Acquistion
 
         }
 
+        #region Transfer Data
         private void EPTParseReceive()
         {
             switch (EPTReceiveData.Command)
@@ -867,6 +885,7 @@ namespace EPT_Data_Acquistion
             }
         }
 
+        #region Display Value/buffer control
         public void DisplayValue1(object WriteRcvChar)
         {
             //this.Invoke(new MethodInvoker(delegate() { tbMonitor1.Text = (string)WriteRcvChar; }));
@@ -964,7 +983,7 @@ namespace EPT_Data_Acquistion
             }
             ScopeBuffer[ScopeBufferChannelSelect][IncrEPTReceiveIndex(ScopeBufferChannelSelect)] = (int)WriteRcvChar;
         }
-
+        #endregion
 
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -1116,6 +1135,7 @@ namespace EPT_Data_Acquistion
 
         }
 
+        #endregion
         //private void groupBox3_Enter(object sender, EventArgs e)
         //{
 
@@ -1123,7 +1143,20 @@ namespace EPT_Data_Acquistion
 
         private void btnCursor1_Click(object sender, EventArgs e)
         {
-
+            if (cursor1)
+            {
+                btnCursor1.Text = "off";
+                b_clr_cursor1.Visible = false;
+                cursor1 = false;
+            }
+            else
+            {
+                btnCursor1.Text = "on";
+                cursor1 = true;
+                b_clr_cursor1.BackColor = clr_cursor1.Color;
+                b_clr_cursor1.Visible = true;
+            }
+            Invalidate();
         }
 
         private void lblVoltage_P1_Click(object sender, EventArgs e)
@@ -1131,8 +1164,22 @@ namespace EPT_Data_Acquistion
 
         }
 
-
-
+        private void btnCursor2_Click(object sender, EventArgs e)
+        {
+            if (cursor2)
+            {
+                btnCursor2.Text = "off";
+                cursor2 = false;
+                b_clr_cursor2.Visible = false;
+            }
+            else
+            {
+                btnCursor2.Text = "on";
+                cursor2 = true;
+                b_clr_cursor2.BackColor = clr_cursor2.Color;
+                b_clr_cursor2.Visible = true;
+            }
+            Invalidate();
         }
 
         public class Transfer
@@ -1157,5 +1204,48 @@ namespace EPT_Data_Acquistion
 
         }
 
+        private void b_clr_cursor1_Click(object sender, EventArgs e)
+        {
+            if (clr_cursor1.ShowDialog() == DialogResult.OK)
+            {
+                this.cursor1_clr = clr_cursor1.Color;
+                b_clr_cursor1.BackColor = clr_cursor1.Color;
+                Invalidate();
+            }
+        }
 
+        private void b_clr_cursor2_Click(object sender, EventArgs e)
+        {
+            if (clr_cursor2.ShowDialog() == DialogResult.OK)
+            {
+                this.cursor2_clr = clr_cursor2.Color;
+                b_clr_cursor2.BackColor = clr_cursor2.Color;
+                Invalidate();
+            }
+        }
+
+        private void b_clr_cursor1_VisibleChanged(object sender, EventArgs e)
+        {
+            b_clr_cursor1.BackColor = cursor1_clr;
+            Invalidate();
+        }
+
+        private void b_clr_cursor2_VisibleChanged(object sender, EventArgs e)
+        {
+            b_clr_cursor2.BackColor = cursor2_clr;
+            Invalidate();
+        }
+
+        private void trkCursor1_Scroll(object sender, EventArgs e)
+        {
+            //TODO - voltage calculation based off slider value
+            Invalidate();
+        }
+
+        private void trkCursor2_Scroll(object sender, EventArgs e)
+        {
+            //TODO - voltage calculation based off slider value
+            Invalidate();
+        }
+    }
 }

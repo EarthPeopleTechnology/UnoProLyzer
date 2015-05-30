@@ -1,6 +1,6 @@
-﻿namespace EPT_Data_Acquistion
+﻿namespace UnoProLyzer
 {
-    partial class EPT_Data_Acquistion
+    partial class UnoProLyzer
     {
         /// <summary>
         /// Required designer variable.
@@ -65,6 +65,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCursor1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.b_clr_cursor2 = new System.Windows.Forms.Button();
+            this.b_clr_cursor1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnCursor2 = new System.Windows.Forms.Button();
             this.trkCursor2 = new System.Windows.Forms.TrackBar();
@@ -90,6 +92,8 @@
             this.lblVoltage_P4 = new System.Windows.Forms.Label();
             this.lblVoltage_P5 = new System.Windows.Forms.Label();
             this.lblVoltage_P6 = new System.Windows.Forms.Label();
+            this.clr_cursor1 = new System.Windows.Forms.ColorDialog();
+            this.clr_cursor2 = new System.Windows.Forms.ColorDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkTimeScale)).BeginInit();
@@ -450,7 +454,7 @@
             // 
             // btnCursor1
             // 
-            this.btnCursor1.Location = new System.Drawing.Point(50, 33);
+            this.btnCursor1.Location = new System.Drawing.Point(32, 41);
             this.btnCursor1.Name = "btnCursor1";
             this.btnCursor1.Size = new System.Drawing.Size(50, 23);
             this.btnCursor1.TabIndex = 99;
@@ -460,6 +464,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.b_clr_cursor2);
+            this.groupBox3.Controls.Add(this.b_clr_cursor1);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btnCursor2);
             this.groupBox3.Controls.Add(this.trkCursor2);
@@ -473,6 +479,30 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Cursors";
             // 
+            // b_clr_cursor2
+            // 
+            this.b_clr_cursor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b_clr_cursor2.Location = new System.Drawing.Point(248, 41);
+            this.b_clr_cursor2.Name = "b_clr_cursor2";
+            this.b_clr_cursor2.Size = new System.Drawing.Size(22, 23);
+            this.b_clr_cursor2.Visible = false;
+            this.b_clr_cursor2.TabIndex = 106;
+            this.b_clr_cursor2.UseVisualStyleBackColor = true;
+            this.b_clr_cursor2.VisibleChanged += new System.EventHandler(this.b_clr_cursor2_VisibleChanged);
+            this.b_clr_cursor2.Click += new System.EventHandler(this.b_clr_cursor2_Click);
+            // 
+            // b_clr_cursor1
+            // 
+            this.b_clr_cursor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b_clr_cursor1.Location = new System.Drawing.Point(88, 41);
+            this.b_clr_cursor1.Name = "b_clr_cursor1";
+            this.b_clr_cursor1.Size = new System.Drawing.Size(22, 23);
+            this.b_clr_cursor1.Visible = false;
+            this.b_clr_cursor1.TabIndex = 105;
+            this.b_clr_cursor1.UseVisualStyleBackColor = true;
+            this.b_clr_cursor1.VisibleChanged += new System.EventHandler(this.b_clr_cursor1_VisibleChanged);
+            this.b_clr_cursor1.Click += new System.EventHandler(this.b_clr_cursor1_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -484,20 +514,25 @@
             // 
             // btnCursor2
             // 
-            this.btnCursor2.Location = new System.Drawing.Point(210, 33);
+            this.btnCursor2.Location = new System.Drawing.Point(192, 41);
             this.btnCursor2.Name = "btnCursor2";
             this.btnCursor2.Size = new System.Drawing.Size(50, 23);
             this.btnCursor2.TabIndex = 103;
             this.btnCursor2.Text = "Off";
             this.btnCursor2.UseVisualStyleBackColor = true;
+            this.btnCursor2.Click += new System.EventHandler(this.btnCursor2_Click);
             // 
             // trkCursor2
-            // 
+            //  TODO - check these over to verify scaling
             this.trkCursor2.Location = new System.Drawing.Point(183, 70);
-            this.trkCursor2.Minimum = -10;
+            this.trkCursor2.Maximum = 450;
+            this.trkCursor2.Minimum = 226;
             this.trkCursor2.Name = "trkCursor2";
             this.trkCursor2.Size = new System.Drawing.Size(104, 45);
             this.trkCursor2.TabIndex = 102;
+            this.trkCursor2.TickFrequency = 25;
+            this.trkCursor2.Value = 338;
+            this.trkCursor2.Scroll += new System.EventHandler(this.trkCursor2_Scroll);
             // 
             // label5
             // 
@@ -509,12 +544,15 @@
             this.label5.Text = "Cursor 1";
             // 
             // trkCursor1
-            // 
+            // TODO - check these over to verify scaling
             this.trkCursor1.Location = new System.Drawing.Point(22, 70);
-            this.trkCursor1.Minimum = -10;
+            this.trkCursor1.Maximum = 225;            
             this.trkCursor1.Name = "trkCursor1";
             this.trkCursor1.Size = new System.Drawing.Size(104, 45);
             this.trkCursor1.TabIndex = 100;
+            this.trkCursor1.TickFrequency = 25;
+            this.trkCursor1.Value = 112;
+            this.trkCursor1.Scroll += new System.EventHandler(this.trkCursor1_Scroll);
             // 
             // lblTime_M4
             // 
@@ -697,7 +735,11 @@
             this.lblVoltage_P6.TabIndex = 120;
             this.lblVoltage_P6.Text = "+2.5V";
             // 
-            // EPT_Data_Acquistion
+            // clr_cursor1
+            // 
+            this.clr_cursor1.Color = System.Drawing.Color.Transparent;
+            // 
+            // UnoProLyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -750,10 +792,10 @@
             this.Controls.Add(this.trkVoltageScale);
             this.Controls.Add(this.trkVoltageScaleControl);
             this.Controls.Add(this.cmbDevList);
-            this.Name = "EPT_Data_Acquistion";
+            this.Name = "UnoProLyzer";
             this.ShowIcon = false;
-            this.Text = "EPT_Data_Acquistion";
-            this.Load += new System.EventHandler(this.EPT_Data_Acquistion_Load);
+            this.Text = "UnoProLyzer";
+            this.Load += new System.EventHandler(this.UnoProLyzer_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -834,6 +876,10 @@
         private System.Windows.Forms.Label lblVoltage_P4;
         private System.Windows.Forms.Label lblVoltage_P5;
         private System.Windows.Forms.Label lblVoltage_P6;
+        private System.Windows.Forms.ColorDialog clr_cursor1;
+        private System.Windows.Forms.ColorDialog clr_cursor2;
+        private System.Windows.Forms.Button b_clr_cursor2;
+        private System.Windows.Forms.Button b_clr_cursor1;
     }
 }
 
