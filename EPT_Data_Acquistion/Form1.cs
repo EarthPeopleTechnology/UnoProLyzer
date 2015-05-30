@@ -10,14 +10,14 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace EPT_Data_Acquisition
+namespace UnoProLyzer
 {
-    public partial class EPT_Data_Acquisition : Form
+    public partial class UnoProLyzer : Form
     {
         #region Constant declaration and variable initialization
         int[] StorageArray = new int[50000];
 
-        public EPT_Data_Acquisition()
+        public UnoProLyzer()
         {
             InitializeComponent();
 
@@ -276,7 +276,7 @@ namespace EPT_Data_Acquisition
         #endregion
 
         // Main object loader
-        private void EPT_Data_Acquisition_Load(object sender, System.EventArgs e)
+        private void UnoProLyzer_Load(object sender, System.EventArgs e)
         {
             // Call the List Devices function
             ListDevices();

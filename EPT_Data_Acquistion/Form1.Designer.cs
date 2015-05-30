@@ -1,6 +1,6 @@
-﻿namespace EPT_Data_Acquisition
+﻿namespace UnoProLyzer
 {
-    partial class EPT_Data_Acquisition
+    partial class UnoProLyzer
     {
         /// <summary>
         /// Required designer variable.
@@ -739,7 +739,7 @@
             // 
             this.clr_cursor1.Color = System.Drawing.Color.Transparent;
             // 
-            // EPT_Data_Acquisition
+            // UnoProLyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -792,10 +792,10 @@
             this.Controls.Add(this.trkVoltageScale);
             this.Controls.Add(this.trkVoltageScaleControl);
             this.Controls.Add(this.cmbDevList);
-            this.Name = "EPT_Data_Acquisition";
+            this.Name = "UnoProLyzer";
             this.ShowIcon = false;
-            this.Text = "EPT_Data_Acquisition";
-            this.Load += new System.EventHandler(this.EPT_Data_Acquisition_Load);
+            this.Text = "UnoProLyzer";
+            this.Load += new System.EventHandler(this.UnoProLyzer_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

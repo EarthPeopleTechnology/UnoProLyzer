@@ -11,9 +11,9 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 
-namespace EPT_Data_Acquisition 
+namespace UnoProLyzer 
 {
-    public partial class EPT_Data_Acquisition 
+    public partial class UnoProLyzer 
     {
         const string activehost_dll = "ActiveHost64.dll";
         [DllImport(activehost_dll)]

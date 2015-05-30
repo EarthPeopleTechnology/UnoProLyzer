@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace EPT_Data_Acquisition
+namespace UnoProLyzer
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace EPT_Data_Acquisition
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EPT_Data_Acquisition());
+            Application.Run(new UnoProLyzer());
         }
     }
 }
