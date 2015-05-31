@@ -607,7 +607,7 @@ namespace UnoProLyzer
             // Draw the Whole screen black
             g.FillRectangle(Brushes.Black, scopeRect);
 
-            const int kpadding = 0;
+            const int kpadding = 25;
             const int tickheight = 4;
             const int tickheightLarge = 8;
             // draw the Grid Lines
@@ -1014,6 +1014,15 @@ namespace UnoProLyzer
 
         }
 
+        public void SendMessage(byte message)
+        {
+            EPT_AH_SendByte((char)2, message);
+
+            EPT_AH_SendTrigger((byte)2);
+            Thread.Sleep(1);
+            EPT_AH_SendTrigger((byte)1);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             ResetADCFifo();
@@ -1041,14 +1050,7 @@ namespace UnoProLyzer
         {
             ResetADCAll();
 
-            EPT_AH_SendByte((char)2, (byte)0x48);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
+            SendMessage((byte)0x48);
         }
 
         private void btnAverageRegister_Click(object sender, EventArgs e)
@@ -1063,76 +1065,32 @@ namespace UnoProLyzer
 
         public void ResetADCAll()
         {
-            EPT_AH_SendByte((char)2, (byte)0x10);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
-        }
+            SendMessage((byte)0x10);
+        }        
 
         public void ResetADCFifo()
         {
-            EPT_AH_SendByte((char)2, (byte)0x18);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
-
+            SendMessage((Byte)0x18);
         }
 
         private void btnScanChannel_1_Click(object sender, EventArgs e)
         {
-
-            EPT_AH_SendByte((char)2, (byte)0x80);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
+            SendMessage((Byte)0x80);
         }
 
         private void btnScanChannels_1_2_Click(object sender, EventArgs e)
         {
-            EPT_AH_SendByte((char)2, (byte)0x88);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
+            SendMessage((Byte)0x88);            
         }
 
         private void btnScanChannels_1_2_3_Click(object sender, EventArgs e)
         {
-            EPT_AH_SendByte((char)2, (byte)0x90);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
+            SendMessage((Byte)0x90);            
         }
 
         private void btnScanChannels_1_2_3_4_Click(object sender, EventArgs e)
         {
-            EPT_AH_SendByte((char)2, (byte)0x98);
-
-            EPT_AH_SendTrigger((byte)2);
-
-            Thread.Sleep(1);
-
-            EPT_AH_SendTrigger((byte)1);
-
+            SendMessage((Byte)0x98);            
         }
 
         #endregion
