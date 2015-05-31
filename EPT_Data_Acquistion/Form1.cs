@@ -273,6 +273,15 @@ namespace UnoProLyzer
         //Set default cursor color
         Color cursor1_clr = Color.Cyan;
         Color cursor2_clr = Color.Cyan;
+
+        //Defined messages to send to device
+        readonly byte ResetADCAllMsg = 0x10;
+        readonly byte ResetADCFifoMsg = 0x18;
+        readonly byte SetupRegisterMsg = 0x48;
+        readonly byte BTNScanChannel1Msg = 0x80;
+        readonly byte BTNScanChannel12Msg = 0x88;
+        readonly byte BTNScanChannel123Msg = 0x90;
+        readonly byte BTNScanChannel1234Msg = 0x98;
         #endregion
 
         // Main object loader
@@ -1013,7 +1022,7 @@ namespace UnoProLyzer
             Invalidate();
 
         }
-
+       
         public void SendMessage(byte message)
         {
             EPT_AH_SendByte((char)2, message);
@@ -1049,8 +1058,7 @@ namespace UnoProLyzer
         public void SetupRegister()
         {
             ResetADCAll();
-
-            SendMessage((byte)0x48);
+            SendMessage(SetupRegisterMsg);
         }
 
         private void btnAverageRegister_Click(object sender, EventArgs e)
@@ -1060,37 +1068,37 @@ namespace UnoProLyzer
 
         private void btnResetRegister_Click(object sender, EventArgs e)
         {
-            ResetADCAll();
+            ResetADCAll();                            
         }
 
         public void ResetADCAll()
         {
-            SendMessage((byte)0x10);
+            SendMessage(ResetADCAllMsg);
         }        
 
         public void ResetADCFifo()
         {
-            SendMessage((Byte)0x18);
+            SendMessage(ResetADCFifoMsg);
         }
 
         private void btnScanChannel_1_Click(object sender, EventArgs e)
         {
-            SendMessage((Byte)0x80);
+            SendMessage(BTNScanChannel1Msg);
         }
 
-        private void btnScanChannels_1_2_Click(object sender, EventArgs e)
-        {
-            SendMessage((Byte)0x88);            
+        private void btnScanChannels_1_2_Click(object sender, EventArgs e)  
+        {  
+            SendMessage(BTNScanChannel12Msg);            
         }
 
         private void btnScanChannels_1_2_3_Click(object sender, EventArgs e)
         {
-            SendMessage((Byte)0x90);            
+            SendMessage(BTNScanChannel123Msg);            
         }
 
         private void btnScanChannels_1_2_3_4_Click(object sender, EventArgs e)
         {
-            SendMessage((Byte)0x98);            
+            SendMessage(BTNScanChannel1234Msg);            
         }
 
         #endregion
