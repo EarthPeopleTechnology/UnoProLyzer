@@ -186,60 +186,26 @@ namespace UnoProLyzer
         //Voltage Scale registers for each channel
         //Voltage Scale Factor
         public int VoltageScaleValue = 5;
-        public int VScaleChannel_1 = 5;
-        public int VScaleChannel_2 = 5;
-        public int VScaleChannel_3 = 5;
-        public int VScaleChannel_4 = 5;
-        public int VScaleChannel_5 = 5;
-        public int VScaleChannel_6 = 5;
-        public int VScaleChannel_7 = 5;
-        public int VScaleChannel_8 = 5;
+        public int[] VScaleChannel = Enumerable.Repeat(5, 8).ToArray();
 
         //Vertical Scale registers for each channel
         public int VerticalScaleValue = 0;
-        public int VerticalScale_1 = 0;
-        public int VerticalScale_2 = 0;
-        public int VerticalScale_3 = 0;
-        public int VerticalScale_4 = 0;
-        public int VerticalScale_5 = 0;
-        public int VerticalScale_6 = 0;
-        public int VerticalScale_7 = 0;
-        public int VerticalScale_8 = 0;
+        public int[] VerticalScale = Enumerable.Repeat(0, 8).ToArray();
 
         //Horizontal Position registers
         public int HorizontalScaleValue = 0;
-        public int HorizontalScale_1 = 0;
-        public int HorizontalScale_2 = 0;
-        public int HorizontalScale_3 = 0;
-        public int HorizontalScale_4 = 0;
-        public int HorizontalScale_5 = 0;
-        public int HorizontalScale_6 = 0;
-        public int HorizontalScale_7 = 0;
-        public int HorizontalScale_8 = 0;
+        public int[] HorizontalScale = Enumerable.Repeat(0, 8).ToArray();
 
         //Time Scale registers
         public int TimeScaleValue = 1;
-        public int TimeScale_1 = 1;
-        public int TimeScale_2 = 1;
-        public int TimeScale_3 = 1;
-        public int TimeScale_4 = 1;
-        public int TimeScale_5 = 1;
-        public int TimeScale_6 = 1;
-        public int TimeScale_7 = 1;
-        public int TimeScale_8 = 1;
+        public int[] TimeScale = Enumerable.Repeat(1, 8).ToArray();
 
         //Horizontal Fast Shift Registers
         public int HorizontalFastShift = 0;
-        public int HorizontalFastShift_1 = 0;
-        public int HorizontalFastShift_2 = 0;
-        public int HorizontalFastShift_3 = 0;
-        public int HorizontalFastShift_4 = 0;
-        public int HorizontalFastShift_5 = 0;
-        public int HorizontalFastShift_6 = 0;
-        public int HorizontalFastShift_7 = 0;
-        public int HorizontalFastShift_8 = 0;
+        public int[] HorizontalFastShiftArray = Enumerable.Repeat(0, 8).ToArray();
 
         //Labels to add
+        //Label[] Channel_VerticalLabel = new Label[8];
         Label Channel_1_VerticalLabel = null;
         Label Channel_2_VerticalLabel = null;
         Label Channel_3_VerticalLabel = null;
@@ -392,68 +358,11 @@ namespace UnoProLyzer
                     TimeScaleIn = 0;
                     //n = 0;
 
-                    switch (OuterDimension)
-                    {
-                        case 0:
-                            VoltageScaleValue = VScaleChannel_1;
-                            VerticalScaleValue = VerticalScale_1;
-                            HorizontalScaleValue = HorizontalScale_1;
-                            TimeScaleValue = TimeScale_1;
-                            IndexOffset = HorizontalScale_1 + HorizontalFastShift_1;
-                            break;
-                        case 1:
-                            VoltageScaleValue = VScaleChannel_2;
-                            VerticalScaleValue = VerticalScale_2;
-                            HorizontalScaleValue = HorizontalScale_2;
-                            TimeScaleValue = TimeScale_2;
-                            IndexOffset = HorizontalScale_2 + HorizontalFastShift_2;
-                            break;
-                        case 2:
-                            VoltageScaleValue = VScaleChannel_3;
-                            VerticalScaleValue = VerticalScale_3;
-                            HorizontalScaleValue = HorizontalScale_3;
-                            TimeScaleValue = TimeScale_3;
-                            IndexOffset = HorizontalScale_3 + HorizontalFastShift_3;
-                            break;
-                        case 3:
-                            VoltageScaleValue = VScaleChannel_4;
-                            VerticalScaleValue = VerticalScale_4;
-                            HorizontalScaleValue = HorizontalScale_4;
-                            TimeScaleValue = TimeScale_4;
-                            IndexOffset = HorizontalScale_4 + HorizontalFastShift_4;
-                            break;
-                        case 4:
-                            VoltageScaleValue = VScaleChannel_5;
-                            VerticalScaleValue = VerticalScale_5;
-                            HorizontalScaleValue = HorizontalScale_5;
-                            TimeScaleValue = TimeScale_5;
-                            IndexOffset = HorizontalScale_5 + HorizontalFastShift_5;
-                            break;
-                        case 5:
-                            VoltageScaleValue = VScaleChannel_6;
-                            VerticalScaleValue = VerticalScale_6;
-                            HorizontalScaleValue = HorizontalScale_6;
-                            TimeScaleValue = TimeScale_6;
-                            IndexOffset = HorizontalScale_6 + HorizontalFastShift_6;
-                            break;
-                        case 6:
-                            VoltageScaleValue = VScaleChannel_7;
-                            VerticalScaleValue = VerticalScale_7;
-                            HorizontalScaleValue = HorizontalScale_7;
-                            TimeScaleValue = TimeScale_7;
-                            IndexOffset = HorizontalScale_7 + HorizontalFastShift_7;
-                            break;
-                        case 7:
-                            VoltageScaleValue = VScaleChannel_8;
-                            VerticalScaleValue = VerticalScale_8;
-                            HorizontalScaleValue = HorizontalScale_8;
-                            TimeScaleValue = TimeScale_8;
-                            IndexOffset = HorizontalScale_8 + HorizontalFastShift_8;
-                            break;
-                        default:
-                            break;
-                    }
-
+                    VoltageScaleValue = VScaleChannel[OuterDimension];
+                    VerticalScaleValue = VerticalScale[OuterDimension];
+                    HorizontalScaleValue = HorizontalScale[OuterDimension];
+                    IndexOffset = HorizontalScaleValue + HorizontalFastShiftArray[OuterDimension];
+                    TimeScaleValue = TimeScale[OuterDimension];
 
                     ScopeIndex = GetScopeBufferIndex(OuterDimension, IndexOffset);
                     //if (ScopeBuffer[OuterDimension] != null)
