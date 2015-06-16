@@ -16,7 +16,7 @@ namespace UnoProLyzer
     {
         #region Constant declaration and variable initialization
         int[] StorageArray = new int[50000];
-
+        DebugConsole debugConsole = null;
         public UnoProLyzer()
         {
             InitializeComponent();
@@ -30,10 +30,14 @@ namespace UnoProLyzer
             InitializeStorageArray();
 
             // reduce flicker
-
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.DoubleBuffer, true);
+            if(System.Diagnostics.Debugger.IsAttached)
+            {
+                DebugConsole debugConsole = new DebugConsole();
+                debugConsole.Show();
+            }
         }
         //Index to store device selection
         Int32 device_index;
@@ -250,6 +254,16 @@ namespace UnoProLyzer
         readonly byte BTNScanChannel1234Msg = 0x98;
         #endregion
 
+        private void debug_msg(String text)
+        {
+            if(System.Diagnostics.Debugger.IsAttached)
+            {
+                if( this.debugConsole != null)
+                {
+                    debugConsole.log_text(text);
+                }
+            }
+        }
         // Main object loader
         private void UnoProLyzer_Load(object sender, System.EventArgs e)
         {
@@ -645,6 +659,7 @@ namespace UnoProLyzer
                         //Display the WriteRcvChar 
                         Thread Display1Thread = new Thread(new ParameterizedThreadStart(DisplayValue1));
                         Display1Thread.Start(WriteRcvChar);
+                        debug_msg("Init thread for displayvalue1 - value: " + WriteRcvChar);
                     }
                     break;
 
@@ -809,7 +824,7 @@ namespace UnoProLyzer
             //this.Invoke(new MethodInvoker(delegate() { tbMonitor1.Text = (string)WriteRcvChar; }));
             ScopeBufferChannelSelect = 0;
             ScopeBuffer[ScopeBufferChannelSelect][IncrEPTReceiveIndex(ScopeBufferChannelSelect)] = (int)WriteRcvChar;
-
+            debug_msg("write buffer for d1: " + (int)WriteRcvChar);
         }
 
         public void DisplayValue2(object WriteRcvChar)
@@ -822,7 +837,7 @@ namespace UnoProLyzer
                 this.Invoke(new MethodInvoker(delegate() { cmbChannelSelect.Items.Add((ScopeBufferChannelSelect + 1)); }));
                 this.Invoke(new MethodInvoker(delegate() { Channel_2_VerticalLabel = new Label(); }));
                 this.Invoke(new MethodInvoker(delegate() { Channel_2_VerticalLabel.ForeColor = Color.Red; }));
-                this.Invoke(new MethodInvoker(delegate() { Channel_2_VerticalLabel.Location = new Point(450, 250); }));
+                this.Invoke(new MethodInvoker(delegate() { Channel_2_VerticalLabel.Location = new Point(450, 250+10); }));
                 this.Invoke(new MethodInvoker(delegate() { Channel_2_VerticalLabel.Font = new Font("Arial", 8); }));
                 this.Invoke(new MethodInvoker(delegate() { Channel_2_VerticalLabel.Text = "--Ch 2"; }));
                 this.Invoke(new MethodInvoker(delegate() { this.Controls.Add(Channel_2_VerticalLabel); }));

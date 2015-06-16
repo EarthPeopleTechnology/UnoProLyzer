@@ -546,7 +546,7 @@
             // trkCursor1
             // TODO - check these over to verify scaling
             this.trkCursor1.Location = new System.Drawing.Point(22, 70);
-            this.trkCursor1.Maximum = 225;            
+            this.trkCursor1.Maximum = 225;
             this.trkCursor1.Name = "trkCursor1";
             this.trkCursor1.Size = new System.Drawing.Size(104, 45);
             this.trkCursor1.TabIndex = 100;
@@ -743,7 +743,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 648);
+            this.ClientSize = new System.Drawing.Size(786, 632);
             this.Controls.Add(this.lblVoltage_P6);
             this.Controls.Add(this.lblVoltage_P5);
             this.Controls.Add(this.lblVoltage_P4);

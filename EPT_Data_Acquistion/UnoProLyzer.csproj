@@ -84,6 +84,12 @@
     <Compile Include="active_transfer_x64.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DebugConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugConsole.Designer.cs">
+      <DependentUpon>DebugConsole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     <Compile Include="SignalSetup.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="DebugConsole.resx">
+      <DependentUpon>DebugConsole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

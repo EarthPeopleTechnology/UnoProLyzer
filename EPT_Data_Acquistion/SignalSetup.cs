@@ -223,28 +223,28 @@ namespace UnoProLyzer
             {
                 case 1:
                     Channel_1_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    break;
                 case 2:
-                       Channel_2_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_2_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 case 3:
-                       Channel_3_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_3_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 case 4:
-                       Channel_4_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_4_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 case 5:
-                       Channel_5_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_5_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 case 6:
-                       Channel_6_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_6_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 case 7:
-                       Channel_7_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_7_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 case 8:
-                       Channel_8_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
-                       break;
+                    Channel_8_VerticalLabel.Top = (250 - VerticalScale[ChannelSelectControl]);
+                    break;
                 default:
                     break;
             }
@@ -326,16 +326,26 @@ namespace UnoProLyzer
             VoltageScaleLabel_M3 = -(float)(trkVoltageScaleControl.Value + 150) / 100;
             VoltageScaleLabel_M4 = -(float)(trkVoltageScaleControl.Value + 200) / 100;
 
-            lblVoltage_P6.Text = VoltageScaleLabel_P6 * VoltageScaleFactor  + "V";
-            lblVoltage_P5.Text = VoltageScaleLabel_P5 * VoltageScaleFactor + "V";
-            lblVoltage_P4.Text = VoltageScaleLabel_P4 * VoltageScaleFactor + "V";
-            lblVoltage_P3.Text = VoltageScaleLabel_P3 * VoltageScaleFactor + "V";
-            lblVoltage_P2.Text = VoltageScaleLabel_P2 * VoltageScaleFactor + "V";
-            lblVoltage_P1.Text = VoltageScaleLabel_P1 * VoltageScaleFactor + "V";
-            lblVoltage_M1.Text = VoltageScaleLabel_M1 * VoltageScaleFactor + "V";
-            lblVoltage_M2.Text = VoltageScaleLabel_M2 * VoltageScaleFactor + "V";
-            lblVoltage_M3.Text = VoltageScaleLabel_M3 * VoltageScaleFactor + "V";
-            lblVoltage_M4.Text = VoltageScaleLabel_M4 * VoltageScaleFactor + "V";
+            lblVoltage_P6.Text = (VoltageScaleLabel_P6 * 
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_P5.Text = (VoltageScaleLabel_P5 * 
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_P4.Text = (VoltageScaleLabel_P4 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_P3.Text = (VoltageScaleLabel_P3 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_P2.Text = (VoltageScaleLabel_P2 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_P1.Text = (VoltageScaleLabel_P1 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_M1.Text = (VoltageScaleLabel_M1 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_M2.Text = (VoltageScaleLabel_M2 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_M3.Text = (VoltageScaleLabel_M3 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
+            lblVoltage_M4.Text = (VoltageScaleLabel_M4 *
+                                  VoltageScaleFactor).ToString("##.###") + "V";
         }
 
 
