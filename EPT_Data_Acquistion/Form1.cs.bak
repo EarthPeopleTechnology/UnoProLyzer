@@ -915,13 +915,7 @@ namespace UnoProLyzer
 
             Thread.Sleep(1);
 
-            //Start ADC Conversion Continuous
-            EPT_AH_SendTrigger((byte)4);
-            //Replace SendTrigger with ControlByte
-
-            /*
             EPT_AH_SendTransferControlByte((char)2, (char)4);
-             * */
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -932,20 +926,15 @@ namespace UnoProLyzer
             btnStart.Enabled = true;
             btnStop.Enabled = false;
 
-            //Stop ADC Conversions
-            EPT_AH_SendTrigger((byte)8);
-
-            //Replace SendTrigger with ControlByte
-            /*
             EPT_AH_SendTransferControlByte((char)2, (char)0);
-             */
+
             Invalidate();
 
         }
        
         public void SendMessage(byte message)
         {
-            EPT_AH_SendByte((char)1, message);
+            EPT_AH_SendByte((char)2, message);
 
             EPT_AH_SendTrigger((byte)2);
             Thread.Sleep(1);
@@ -1066,115 +1055,6 @@ namespace UnoProLyzer
                 b_clr_cursor2.Visible = true;
             }
             Invalidate();
-        }
-
-        private void trkBrTimeBase_Scroll(object sender, EventArgs e)
-        {
-            byte[] ADCConversionDelayByte = new byte[3];
-            bool TimeBaseUpdateScopeOn = false;
-
-
-            switch (trkBrTimeBase.Value)
-            {
-                case 1:
-                    ADCConversionDelayByte[0] = 0x10; //24'h10; //0.005ms
-                    ADCConversionDelayByte[1] = 0x00;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 2:
-                    ADCConversionDelayByte[0] = 0x21; //24'h21; //0.010ms
-                    ADCConversionDelayByte[1] = 0x00;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 3:
-                    ADCConversionDelayByte[0] = 0x42; //24'h42; //0.025ms
-                    ADCConversionDelayByte[1] = 0x00;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 4:
-                    ADCConversionDelayByte[0] = 0x94; //24'h294; //0.05ms
-                    ADCConversionDelayByte[1] = 0x02;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 5:
-                    ADCConversionDelayByte[0] = 0xe4; //24'hce4; //0.07ms
-                    ADCConversionDelayByte[1] = 0x0c;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 6:
-                    ADCConversionDelayByte[0] = 0xc8; //24'h19c8; //0.1ms
-                    ADCConversionDelayByte[1] = 0x19;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 7:
-                    ADCConversionDelayByte[0] = 0xe8; //24'h80e8; //0.5ms
-                    ADCConversionDelayByte[1] = 0x80;
-                    ADCConversionDelayByte[2] = 0x00;
-                    break;
-                case 8:
-                    ADCConversionDelayByte[0] = 0xd0; //24'h101d0; //1ms
-                    ADCConversionDelayByte[1] = 0x01;
-                    ADCConversionDelayByte[2] = 0x01;
-                    break;
-                case 9:
-                    ADCConversionDelayByte[0] = 0x10; //24'h50910; //5ms
-                    ADCConversionDelayByte[1] = 0x09;
-                    ADCConversionDelayByte[2] = 0x05;
-                    break;
-                case 10:
-                    ADCConversionDelayByte[0] = 0x20; //24'ha1220; //10ms
-                    ADCConversionDelayByte[1] = 0x12;
-                    ADCConversionDelayByte[2] = 0x0a;
-                    break;
-                default:
-                    break;
-
-            }
-
-            for (int Index = 0; Index < 3; Index++)
-            {
-
-                EPT_AH_SendByte((char)1, ADCConversionDelayByte[Index]);
-
-                //Latch value into CPLD
-                EPT_AH_SendTrigger((byte)(0x10 << Index));
-
-                /*
-                EPT_AH_SendTransferControlByte((char)2, (char)(16 << Index));
-
-                EPT_AH_SendTransferControlByte((char)2, (char)0);
-                */
-            }
-
-            //Reset all of the EndTerm Channel variables
-            DisplayAddress_1 = true;
-            DisplayAddress_2 = false;
-            DisplayAddress_3 = false;
-            DisplayAddress_4 = false;
-            DisplayAddress_5 = false;
-            DisplayAddress_6 = false;
-
-            Channel1_Select = false;
-            Channel2_Select = false;
-            Channel3_Select = false;
-            Channel4_Select = false;
-            Channel5_Select = false;
-            Channel6_Select = false;
-
-
-            FirstDisplayByte = true;
-
-            FirstPreviousActualAddr = 0;
-            SecondPreviousActualAddr = 0;
-
-            FirstPreviousCalcAddr = 0;
-            SecondPreviousCalcAddr = 0;
-
-            AnalogValue = 0;
-            FloatValue = 0;
-
-
-
         }
 
         public class Transfer
