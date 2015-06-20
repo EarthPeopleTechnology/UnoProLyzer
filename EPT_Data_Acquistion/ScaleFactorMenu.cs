@@ -8,11 +8,11 @@ using System.IO.Ports;
 using System.IO;
 
 
-namespace EPT_Data_Acquistion
+namespace UnoProLyzer
 {
 
 
-    public partial class EPT_Data_Acquistion
+    public partial class UnoProLyzer
     {
 
         //Textboxes to add

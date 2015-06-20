@@ -92,10 +92,8 @@
             this.lblVoltage_P4 = new System.Windows.Forms.Label();
             this.lblVoltage_P5 = new System.Windows.Forms.Label();
             this.lblVoltage_P6 = new System.Windows.Forms.Label();
-            this.trkBrTimeBase = new System.Windows.Forms.TrackBar();
             this.clr_cursor1 = new System.Windows.Forms.ColorDialog();
             this.clr_cursor2 = new System.Windows.Forms.ColorDialog();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkTimeScale)).BeginInit();
@@ -105,7 +103,6 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkCursor2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkCursor1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trkBrTimeBase)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -738,25 +735,6 @@
             this.lblVoltage_P6.TabIndex = 120;
             this.lblVoltage_P6.Text = "+2.5V";
             // 
-            // trkBrTimeBase
-            // 
-            this.trkBrTimeBase.Location = new System.Drawing.Point(527, 73);
-            this.trkBrTimeBase.Minimum = 1;
-            this.trkBrTimeBase.Name = "trkBrTimeBase";
-            this.trkBrTimeBase.Size = new System.Drawing.Size(104, 45);
-            this.trkBrTimeBase.TabIndex = 121;
-            this.trkBrTimeBase.Value = 5;
-            this.trkBrTimeBase.Scroll += new System.EventHandler(this.trkBrTimeBase_Scroll);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(529, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 122;
-            this.label7.Text = "TimeBase";
-            // 
             // clr_cursor1
             // 
             this.clr_cursor1.Color = System.Drawing.Color.Transparent;
@@ -766,8 +744,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 648);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.trkBrTimeBase);
             this.Controls.Add(this.lblVoltage_P6);
             this.Controls.Add(this.lblVoltage_P5);
             this.Controls.Add(this.lblVoltage_P4);
@@ -831,7 +807,6 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkCursor2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkCursor1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trkBrTimeBase)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -901,8 +876,6 @@
         private System.Windows.Forms.Label lblVoltage_P4;
         private System.Windows.Forms.Label lblVoltage_P5;
         private System.Windows.Forms.Label lblVoltage_P6;
-        private System.Windows.Forms.TrackBar trkBrTimeBase;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ColorDialog clr_cursor1;
         private System.Windows.Forms.ColorDialog clr_cursor2;
         private System.Windows.Forms.Button b_clr_cursor2;
