@@ -227,3 +227,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#custom ignores
+*.*bk
