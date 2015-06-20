@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("UnoProLyzer")]
 [assembly: AssemblyDescription("UnoProLogic USB-CPLD Development System")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("EarthPeopleTechnology")]
 [assembly: AssemblyProduct("UnoProLyzer")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("EarthPeopleTechnology")]

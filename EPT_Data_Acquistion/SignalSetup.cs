@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 
-
 namespace UnoProLyzer
 {
 
@@ -134,7 +133,17 @@ namespace UnoProLyzer
                 EPTReceiveIndexInitFlag = true;
 
             if (EPTReceiveIndex[SelectedChannel] % 450 == 0)
-                Invalidate();
+            { 
+                if (renderCounter >= renderWindow)
+                {
+                    Invalidate();
+                    renderCounter = 0;
+                }
+                else
+                {
+                    renderCounter++;
+                }
+            }
 
                 return EPTReceiveIndex[SelectedChannel]++;
         }
