@@ -114,6 +114,8 @@ namespace UnoProLyzer
         public int[][] ScopeBuffer = new int[8][];
         public int[] EPTReceiveIndex = new int[8];
         public int OuterDimension = 0;
+        public int renderWindow = 4;  //Controls how many data messages are received between processing.
+        public int renderCounter = 0;
 
         // put the a/d readings into repeat mode for 450 readings
         int n = 0;
