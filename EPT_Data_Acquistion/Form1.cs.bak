@@ -329,11 +329,6 @@ namespace UnoProLyzer
             Channel_1_VerticalLabel.Font = new Font("Arial", 8);
             Channel_1_VerticalLabel.Text = "--Ch 1";
             this.Controls.Add(Channel_1_VerticalLabel);
-
-            ScopeBuffer[1] = new int[50000];
-            ScopeBuffer[2] = new int[50000];
-            ScopeBuffer[3] = new int[50000];
-
         }
 
         Random r = new Random();
